@@ -1,6 +1,8 @@
 ---
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Container"
+permissions:
+  packages: write
 
 on:
   workflow_dispatch:
@@ -37,9 +39,6 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -47,9 +46,9 @@ jobs:
 
       - name: Build container
         run: |
-          ansible-builder build -t ghcr.io/${{ github.repository }}/ansible-runner:latest
+          ansible-builder build -t ghcr.io/${{ github.repository }}/ansible-runner:latest -v 3
 
       - name: Push container
         run: |
           echo ${{ steps.app-token.outputs.token }} | docker login ghcr.io -u ${{ github.repository }} --password-stdin
-          docker push ghcr.io/${{ github.repository }}/ansible-runner:latest
+          podman push ghcr.io/${{ github.repository }}/ansible-runner:latest
