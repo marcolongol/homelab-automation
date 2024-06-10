@@ -16,6 +16,11 @@ dependencies:
   python: requirements.txt
   system:
     - iputils
+    - openssh-clients
+    - python3
+    - python3-pip
+    - python3-virtualenv
+    - sshpass
 
 additional_build_steps:
   append_final:
