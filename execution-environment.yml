@@ -22,13 +22,7 @@ dependencies:
     - python3-virtualenv
     - sshpass
 
-additional_build_files:
-  - src: ansible.cfg
-    dest: configs
-
 additional_build_steps:
-  prepend_galaxy:
-    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
   append_final:
     # Install sops
     - RUN curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
