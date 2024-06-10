@@ -18,6 +18,8 @@ dependencies:
     - iputils
 
 additional_build_steps:
+  prepend_base:
+    - ENV SOPS_AGE_KEY=${SOPS_AGE_KEY:-}
   append_final:
     # Install sops
     - RUN curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
