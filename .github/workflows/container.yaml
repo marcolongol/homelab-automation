@@ -22,7 +22,6 @@ jobs:
       packages: write
       id-token: write
     runs-on: ubuntu-latest
-    # workflow used to build ansible execution environment with ansible-builder and push it to ghcr.io
     steps:
       - name: Generate Token
         uses: actions/create-github-app-token@v1
@@ -48,9 +47,9 @@ jobs:
 
       - name: Build container
         run: |
-          ansible-builder build -t ghcr.io/${{ github.repository }}/ansible-runner:latest -v 3
+          ansible-builder build -t ghcr.io/${{ github.repository }}-ee:latest -v 3
 
       - name: Push container
         run: |
           echo ${{ steps.app-token.outputs.token }} | podman login ghcr.io -u ${{ github.repository }} --password-stdin
-          podman push ghcr.io/${{ github.repository }}/ansible-runner:latest
+          podman push ghcr.io/${{ github.repository }}-ee:latest
