@@ -1,0 +1,55 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "Container"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  container:
+    name: Container
+    runs-on: ubuntu-latest
+    # workflow used to build ansible execution environment with ansible-builder and push it to ghcr.io
+    steps:
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible-builder
+
+      - name: Build container
+        run: |
+          ansible-builder build -t ghcr.io/${{ github.repository }}/ansible-runner:latest
+
+      - name: Push container
+        run: |
+          echo ${{ steps.app-token.outputs.token }} | docker login ghcr.io -u ${{ github.repository }} --password-stdin
+          docker push ghcr.io/${{ github.repository }}/ansible-runner:latest
