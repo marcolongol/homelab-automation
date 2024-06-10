@@ -2,24 +2,27 @@
 version: 3
 
 images:
-    base_image:
-        name: registry.fedoraproject.org/fedora:38
+  base_image:
+    name: registry.fedoraproject.org/fedora:38
 
 dependencies:
-    ansible_core:
-        package_pip: ansible-core==2.17.0
+  ansible_core:
+    package_pip: ansible-core==2.17.0
 
-    ansible_runner:
-        package_pip: ansible-runner==2.4.0
+  ansible_runner:
+    package_pip: ansible-runner==2.4.0
 
-    galaxy: requirements.yml
-    python: requirements.txt
-    system:
-        - iputils
+  galaxy: requirements.yml
+  python: requirements.txt
+  system:
+    - iputils
 
 additional_build_steps:
-    append_final:
-        # Install sops
-        - RUN curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
-        - RUN chmod +x sops-v3.8.1.linux.amd64
-        - RUN mv sops-v3.8.1.linux.amd64 /usr/local/bin/sops
+  append_final:
+    # Install sops
+    - RUN curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
+    - RUN chmod +x sops-v3.8.1.linux.amd64
+    - RUN mv sops-v3.8.1.linux.amd64 /usr/local/bin/sops
+    # Image metadata
+    - LABEL org.opencontainers.image.description="Ansible Runner container for homelab automation"
+    - LABEL org.opencontainers.image.source=https://github.com/marcolongol/homelab-automation
