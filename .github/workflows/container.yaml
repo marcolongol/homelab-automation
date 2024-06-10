@@ -1,8 +1,6 @@
 ---
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Container"
-permissions:
-  packages: write
 
 on:
   workflow_dispatch:
@@ -19,6 +17,10 @@ concurrency:
 jobs:
   container:
     name: Container
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
     runs-on: ubuntu-latest
     # workflow used to build ansible execution environment with ansible-builder and push it to ghcr.io
     steps:
@@ -50,5 +52,5 @@ jobs:
 
       - name: Push container
         run: |
-          echo ${{ steps.app-token.outputs.token }} | docker login ghcr.io -u ${{ github.repository }} --password-stdin
+          echo ${{ steps.app-token.outputs.token }} | podman login ghcr.io -u ${{ github.repository }} --password-stdin
           podman push ghcr.io/${{ github.repository }}/ansible-runner:latest
