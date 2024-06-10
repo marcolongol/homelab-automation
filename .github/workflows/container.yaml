@@ -53,3 +53,6 @@ jobs:
         run: |
           echo ${{ steps.app-token.outputs.token }} | podman login ghcr.io -u ${{ github.repository }} --password-stdin
           podman push ghcr.io/${{ github.repository }}-ee:latest
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          INPUT_GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
