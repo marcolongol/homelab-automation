@@ -99,7 +99,7 @@ proxmox_vms:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
       virtio0: "local:50,format=qcow2,discard=on"
-      virtio1: "local:500,format=qcow2,discard=on"
+      virtio1: "local:1000,format=qcow2,discard=on"
     tags:
       - "k8s"
 
@@ -118,7 +118,7 @@ proxmox_vms:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
       virtio0: "local:50,format=qcow2,discard=on"
-      virtio1: "local:500,format=qcow2,discard=on"
+      virtio1: "local:1000,format=qcow2,discard=on"
     tags:
       - "k8s"
 
@@ -137,7 +137,7 @@ proxmox_vms:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
       virtio0: "local:50,format=qcow2,discard=on"
-      virtio1: "local:500,format=qcow2,discard=on"
+      virtio1: "local:1000,format=qcow2,discard=on"
     tags:
       - "k8s"
 
