@@ -21,7 +21,7 @@ proxmox_images_urls:
     - name: "Fedora-Workstation-Live-x86_64-39-1.5.iso"
       url: "https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.5.iso"
     - name: "talos-linux-amd64.iso"
-      url: "https://github.com/siderolabs/talos/releases/download/v1.5.6/metal-amd64.iso"
+      url: "https://github.com/siderolabs/talos/releases/download/v1.7.4/metal-amd64.iso"
   cloud_init:
     - name: "ubuntu-22.04-server-cloudimg-amd64.img"
       url: "https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
@@ -99,7 +99,7 @@ proxmox_vms:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
       virtio0: "local:50,format=qcow2,discard=on"
-      virtio1: "local:500,format=qcow2,discard=on"
+      virtio1: "local:1000,format=qcow2,discard=on"
     tags:
       - "k8s"
 
@@ -118,7 +118,7 @@ proxmox_vms:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
       virtio0: "local:50,format=qcow2,discard=on"
-      virtio1: "local:500,format=qcow2,discard=on"
+      virtio1: "local:1000,format=qcow2,discard=on"
     tags:
       - "k8s"
 
@@ -137,7 +137,7 @@ proxmox_vms:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
       virtio0: "local:50,format=qcow2,discard=on"
-      virtio1: "local:500,format=qcow2,discard=on"
+      virtio1: "local:1000,format=qcow2,discard=on"
     tags:
       - "k8s"
 
