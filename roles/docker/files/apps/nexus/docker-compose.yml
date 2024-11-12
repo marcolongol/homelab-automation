@@ -19,7 +19,10 @@ services:
       - traefik.http.routers.registry-secure.entrypoints=websecure
       - traefik.http.routers.registry-secure.rule=Host(`registry.${DOMAIN}`)
       - traefik.http.routers.registry-secure.service=registry
-      - traefik.http.services.registry.loadbalancer.server.port=5000
+      - traefik.http.services.registry.loadbalancer.server.port=8082
+    expose:
+      - "8081"
+      - "8082"
     networks:
       - traefik
 
