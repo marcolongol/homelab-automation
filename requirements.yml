@@ -12,7 +12,7 @@ roles:
   - src: Oefenweb.fail2ban
     version: v4.0.11
   - src: lae.proxmox
-    version: v1.8.1
+    version: v1.9.1
   - src: geerlingguy.docker
     version: 7.4.4
 
