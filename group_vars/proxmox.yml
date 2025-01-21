@@ -199,7 +199,7 @@ proxmox_manage_networking: true
 
 # lae.proxmox role
 # ----------------------
-pve_cluster_enabled: true
+pve_cluster_enabled: false
 pve_manage_ssh: false
 pve_group: "proxmox"
 pve_api_host: "{{ inventory_hostname }}"
