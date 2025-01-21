@@ -7,7 +7,7 @@ services:
     security_opt:
       - "no-new-privileges:true"
     volumes:
-      - "nexus-data:/nexus-data"
+      - "/mnt/docker-volumes/nexus-data:/nexus-data"
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik
@@ -29,7 +29,3 @@ services:
 networks:
   traefik:
     external: true
-
-volumes:
-  nexus-data:
-    driver: local
