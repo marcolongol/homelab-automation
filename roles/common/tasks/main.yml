@@ -67,4 +67,4 @@
     path: "{{ smb_share.mount_path }}"
     fstype: cifs
     opts: "rw,vers=3,username={{ smb_share.credentials.username }},password={{ smb_share.credentials.password }},file_mode=0775,dir_mode=0775,x-systemd.automount,x-systemd.requires=network-online.target,x-systemd.device-timeout=10s,iocharset=utf8,noperm,_netdev,uid={{ ansible_user_id }},gid={{ ansible_user_id }},gid={{ ansible_user_id }}"
-    state: mounted
+    state: ephemeral
