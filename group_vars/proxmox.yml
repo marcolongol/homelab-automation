@@ -209,7 +209,7 @@ proxmox_vms:
     cores: 8
     memory: 16384
     net:
-      net0: "virtio=0E:C1:0A:C2:73:CB,bridge=vmbr1"
+      net0: "virtio=72:8D:15:1E:83:1F,bridge=vmbr1"
     ide:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
@@ -229,7 +229,7 @@ proxmox_vms:
     cores: 8
     memory: 16384
     net:
-      net0: "virtio=0E:C1:0A:C2:73:CB,bridge=vmbr1"
+      net0: "virtio=62:49:6C:D6:CF:E0,bridge=vmbr1"
     ide:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
@@ -249,7 +249,7 @@ proxmox_vms:
     cores: 8
     memory: 16384
     net:
-      net0: "virtio=0E:C1:0A:C2:73:CB,bridge=vmbr1"
+      net0: "virtio=0C:66:BA:24:BE:28,bridge=vmbr1"
     ide:
       ide2: "isos:iso/talos-linux-amd64.iso,media=cdrom"
     virtio:
