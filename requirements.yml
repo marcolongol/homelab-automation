@@ -14,7 +14,7 @@ roles:
   - src: lae.proxmox
     version: v1.9.1
   - src: geerlingguy.docker
-    version: 7.4.4
+    version: 7.4.5
 
 collections:
   - name: ansible.posix
